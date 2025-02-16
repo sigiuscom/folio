@@ -24,7 +24,7 @@ const Index = () => {
               <Cpu className="w-6 h-6 text-primary" />
             </div>
             <h1 className="text-2xl font-semibold mb-2">Sergei Golubev</h1>
-            <p className="text-muted-foreground">Technical Engineer in IT</p>
+            <p className="text-muted-foreground">IT Engineer</p>
           </div>
 
           {/* Contact Section */}
