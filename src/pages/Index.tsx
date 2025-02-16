@@ -41,7 +41,7 @@ const Index = () => {
 
             {/* Additional Info */}
             <p className="text-sm text-muted-foreground text-center mt-6">
-              Available for DevOps and Cloud Transformation projects
+              Technical Expert in IT Solutions
             </p>
           </div>
         </div>
