@@ -5,7 +5,7 @@ import { toast } from "sonner";
 
 const Index = () => {
   const [copied, setCopied] = useState(false);
-  const email = "your.email@example.com"; // Replace with your actual email
+  const email = "sagolubev@outlook.com";
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -23,8 +23,8 @@ const Index = () => {
             <div className="inline-flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-primary/10">
               <Cpu className="w-6 h-6 text-primary" />
             </div>
-            <h1 className="text-2xl font-semibold mb-2">Your Name</h1>
-            <p className="text-muted-foreground">Technical Engineer</p>
+            <h1 className="text-2xl font-semibold mb-2">Sergei Golubev</h1>
+            <p className="text-muted-foreground">Technical Engineer in IT</p>
           </div>
 
           {/* Contact Section */}
@@ -41,7 +41,7 @@ const Index = () => {
 
             {/* Additional Info */}
             <p className="text-sm text-muted-foreground text-center mt-6">
-              Available for technical engineering projects and consultations
+              Available for DevOps and Cloud Transformation projects
             </p>
           </div>
         </div>
