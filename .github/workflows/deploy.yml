@@ -28,7 +28,7 @@ jobs:
         run: npm run build
       
       - name: Deploy to deployment branch
-        uses: peaceiris/actions-gh-pages@e9c66a37f080288a11235e32cbe2dc5fb3a679cc
+        uses: peaceiris/actions-gh-pages@47f197a2200bb9de68ba5f48fad1c088eb1c4a32
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
