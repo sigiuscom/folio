@@ -1,5 +1,5 @@
 
-import { Mail, Cpu } from "lucide-react";
+import { Mail, Cloud } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -21,7 +21,7 @@ const Index = () => {
           {/* Header Section */}
           <div className="p-6 text-center border-b border-border/50">
             <div className="inline-flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-primary/10">
-              <Cpu className="w-6 h-6 text-primary" />
+              <Cloud className="w-6 h-6 text-primary" />
             </div>
             <h1 className="text-2xl font-semibold mb-2">Sergei Golubev</h1>
             <p className="text-muted-foreground">IT Engineer</p>
