@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1766245228547" clover="3.2.0">
+  <project timestamp="1766245228547" name="All files">
+    <metrics statements="70" coveredstatements="57" conditionals="20" coveredconditionals="16" methods="26" coveredmethods="19" elements="116" coveredelements="92" complexity="0" loc="70" ncloc="70" packages="3" files="4" classes="4"/>
+    <package name="hooks">
+      <metrics statements="61" coveredstatements="48" conditionals="20" coveredconditionals="16" methods="22" coveredmethods="15"/>
+      <file name="use-mobile.tsx" path="/workspace/project/folio/src/hooks/use-mobile.tsx">
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="15" type="stmt"/>
+        <line num="8" count="15" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="18" count="15" type="stmt"/>
+      </file>
+      <file name="use-toast.ts" path="/workspace/project/folio/src/hooks/use-toast.ts">
+        <metrics statements="51" coveredstatements="38" conditionals="20" coveredconditionals="16" methods="18" coveredmethods="11"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="59" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="71" count="3" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="75" count="16" type="cond" truecount="4" falsecount="0"/>
+        <line num="77" count="8" type="stmt"/>
+        <line num="83" count="3" type="stmt"/>
+        <line num="86" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="91" count="3" type="stmt"/>
+        <line num="95" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="96" count="2" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="99" count="2" type="stmt"/>
+        <line num="103" count="3" type="stmt"/>
+        <line num="106" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="116" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="117" count="1" type="stmt"/>
+        <line num="122" count="1" type="stmt"/>
+        <line num="124" count="2" type="stmt"/>
+        <line num="129" count="1" type="stmt"/>
+        <line num="131" count="1" type="stmt"/>
+        <line num="134" count="7" type="stmt"/>
+        <line num="135" count="7" type="stmt"/>
+        <line num="136" count="0" type="stmt"/>
+        <line num="143" count="5" type="stmt"/>
+        <line num="145" count="5" type="stmt"/>
+        <line num="146" count="1" type="stmt"/>
+        <line num="150" count="5" type="stmt"/>
+        <line num="152" count="5" type="stmt"/>
+        <line num="159" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="164" count="5" type="stmt"/>
+        <line num="172" count="0" type="stmt"/>
+        <line num="174" count="0" type="stmt"/>
+        <line num="175" count="0" type="stmt"/>
+        <line num="176" count="0" type="stmt"/>
+        <line num="177" count="0" type="stmt"/>
+        <line num="178" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="179" count="0" type="stmt"/>
+        <line num="184" count="0" type="stmt"/>
+        <line num="187" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="utils.ts" path="/workspace/project/folio/src/lib/utils.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="12" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="Index.tsx" path="/workspace/project/folio/src/pages/Index.tsx">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="19" type="stmt"/>
+        <line num="8" count="19" type="stmt"/>
+        <line num="10" count="19" type="stmt"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
