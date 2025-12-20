@@ -64,6 +64,51 @@ This project is built with .
 
 Simply open [Lovable](https://lovable.dev/projects/aade069d-3ecd-48d7-a1e2-72b176137178) and click on Share -> Publish.
 
+## CI/CD Pipeline
+
+This project includes automated testing and deployment workflows:
+
+### Deployment Workflow (`.github/workflows/deploy.yml`)
+- **Trigger**: Push to `master` branch
+- **Steps**:
+  1. **Test Job**: Runs linting and tests
+  2. **Build & Deploy Job**: Only runs if tests pass
+     - Builds the application
+     - Deploys to `deployment` branch for GitHub Pages
+
+### Continuous Integration (`.github/workflows/ci.yml`)
+- **Trigger**: Pull requests and pushes to `master`
+- **Features**:
+  - Code linting with ESLint
+  - Test execution with coverage reports
+  - TypeScript type checking
+  - Build verification
+
+### Running Tests Locally
+
+```sh
+# Install dependencies
+bun install
+
+# Run linting
+bun run lint
+
+# Run tests
+bun run test
+
+# Run tests with coverage
+bun run coverage
+
+# Build the project
+bun run build
+```
+
+### Key Benefits
+- ✅ **Quality Gate**: Deployment only happens after successful tests
+- ✅ **Fast Feedback**: Immediate feedback on pull requests
+- ✅ **Automated**: No manual intervention required
+- ✅ **Safe**: Prevents broken code from being deployed
+
 ## I want to use a custom domain - is that possible?
 
 We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)

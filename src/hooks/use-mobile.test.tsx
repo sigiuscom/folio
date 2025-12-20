@@ -136,7 +136,7 @@ describe('useIsMobile hook', () => {
   });
 
   it('should update when media query changes', () => {
-    let changeHandler: ((event: any) => void) | null = null;
+    let changeHandler: ((event: MediaQueryListEvent) => void) | null = null;
 
     const mockMql = {
       matches: false,
