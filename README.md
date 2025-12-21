@@ -36,6 +36,31 @@ npm i
 npm run dev
 ```
 
+## Development Server Security
+
+The development server is configured with security measures to prevent DNS rebinding attacks:
+
+- **Port**: The server runs on port `12000` (changed from the default 8080)
+- **Allowed Hosts**: By default, only `localhost` and `127.0.0.1` are allowed
+- **Additional Hosts**: You can specify additional allowed hosts using the `VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS` environment variable
+
+### Adding Custom Allowed Hosts
+
+If you need to allow additional hosts (e.g., for Docker or custom domains), set the environment variable:
+
+```sh
+# Single host
+export VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS="my.docker.service"
+
+# Multiple hosts (comma-separated)
+export VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS="my.docker.service,custom.domain.local,192.168.1.100"
+
+# Then start the dev server
+npm run dev
+```
+
+**Security Note**: The server uses `host: "0.0.0.0"` for container compatibility but restricts allowed hosts to prevent DNS rebinding vulnerabilities. Only add trusted hosts to the allowed list.
+
 **Edit a file directly in GitHub**
 
 - Navigate to the desired file(s).
