@@ -7,7 +7,7 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => {
   // Parse additional allowed hosts from environment variable for security
   const additionalHosts = process.env.VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS
-    ? process.env.VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS.split(',').map(host => host.trim())
+    ? process.env.VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS.split(',').map(host => host.trim()).filter(host => host)
     : [];
   
   // Default allowed hosts - restrict to localhost and loopback for security
