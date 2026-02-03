@@ -1,5 +1,4 @@
 import { LanguageProvider } from '@/contexts/LanguageContext';
-import AnimatedBackground from '@/components/AnimatedBackground';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import HeroSection from '@/components/HeroSection';
 import SkillsSection from '@/components/SkillsSection';
@@ -10,11 +9,10 @@ import ContactSection from '@/components/ContactSection';
 const Index = () => {
   return (
     <LanguageProvider>
-      <div className="relative min-h-screen">
-        <AnimatedBackground />
+      <div className="min-h-screen bg-background">
         <LanguageSwitcher />
         
-        <main className="relative z-10">
+        <main>
           <HeroSection />
           <SkillsSection />
           <TechSection />

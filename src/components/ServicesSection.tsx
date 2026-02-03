@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Check } from 'lucide-react';
 
 const ServicesSection = () => {
   const { t } = useLanguage();
@@ -13,60 +12,38 @@ const ServicesSection = () => {
     t('services.5'),
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.5, ease: 'easeOut' as const },
-    },
-  };
-
   return (
-    <section id="services" className="py-24 px-6">
-      <div className="max-w-3xl mx-auto">
+    <section id="services" className="py-24 md:py-32 px-6 md:px-12 lg:px-24 border-t border-border">
+      <div className="max-w-6xl">
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-mono font-bold text-center mb-16 text-gradient"
+          transition={{ duration: 0.5 }}
+          className="text-sm tracking-wide uppercase text-muted-foreground mb-12"
         >
           {t('services.title')}
         </motion.h2>
 
-        <motion.ul
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="space-y-4"
-        >
+        <div className="space-y-0">
           {services.map((service, index) => (
-            <motion.li
+            <motion.div
               key={index}
-              variants={itemVariants}
-              className="flex items-start gap-4 glass rounded-xl p-5 card-hover"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="py-6 border-b border-border group flex items-baseline gap-6"
             >
-              <div className="flex-shrink-0 p-2 rounded-lg bg-primary/10">
-                <Check className="w-5 h-5 text-primary" />
-              </div>
-              <span className="text-foreground/90 text-base md:text-lg pt-1">
+              <span className="text-muted-foreground text-sm font-body tabular-nums">
+                0{index + 1}
+              </span>
+              <span className="text-xl md:text-2xl font-display font-medium group-hover:text-accent transition-colors duration-200">
                 {service}
               </span>
-            </motion.li>
+            </motion.div>
           ))}
-        </motion.ul>
+        </div>
       </div>
     </section>
   );
