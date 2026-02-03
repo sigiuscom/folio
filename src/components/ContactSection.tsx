@@ -1,59 +1,57 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Mail } from 'lucide-react';
 
 const ContactSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="contact" className="py-24 px-6">
-      <div className="max-w-2xl mx-auto text-center">
+    <section id="contact" className="py-24 md:py-32 px-6 md:px-12 lg:px-24 border-t border-border">
+      <div className="max-w-4xl">
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-mono font-bold mb-8 text-gradient"
+          transition={{ duration: 0.5 }}
+          className="text-sm tracking-wide uppercase text-muted-foreground mb-8"
         >
           {t('contact.title')}
         </motion.h2>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg text-muted-foreground mb-10"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-2xl md:text-3xl font-display font-medium mb-12 max-w-2xl"
         >
           {t('contact.text')}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
           <a
             href="mailto:hello@example.com"
-            className="inline-flex items-center gap-3 px-8 py-4 glass rounded-xl font-mono text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 group"
+            className="inline-block text-xl md:text-2xl font-display link-underline hover:text-accent transition-colors duration-200"
           >
-            <Mail className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-            <span>{t('contact.email')}</span>
+            hello@example.com
           </a>
         </motion.div>
 
-        <motion.div
+        <motion.footer
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-20 pt-8 border-t border-border/50"
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-32 pt-8 border-t border-border"
         >
-          <p className="text-sm text-muted-foreground/60 font-mono">
-            © {new Date().getFullYear()} · Built with precision
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()}
           </p>
-        </motion.div>
+        </motion.footer>
       </div>
     </section>
   );
