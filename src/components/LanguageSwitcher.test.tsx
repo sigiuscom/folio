@@ -1,12 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
 import LanguageSwitcher from '../components/LanguageSwitcher';
-import { LanguageProvider } from '../contexts/LanguageContext';
-
-// Wrapper to provide context
-const renderWithProvider = (ui: React.ReactElement) => {
-  return render(ui, { wrapper: ({ children }) => <LanguageProvider>{children}</LanguageProvider> });
-};
+import { renderWithProvider } from '../test/test-utils';
 
 describe('LanguageSwitcher Component', () => {
   it('renders both language options', () => {
@@ -27,47 +22,29 @@ describe('LanguageSwitcher Component', () => {
     expect(ruButton).toHaveClass('text-muted-foreground');
   });
 
-  it('switches language when clicking EN button', () => {
+  it('switches language between EN and RU', () => {
     renderWithProvider(<LanguageSwitcher />);
-    
+
     const enButton = screen.getByText('EN');
     const ruButton = screen.getByText('RU');
-    
+
     // Initially EN is active
     expect(enButton).toHaveClass('text-foreground');
     expect(ruButton).toHaveClass('text-muted-foreground');
-    
+
     // Click RU to switch
     fireEvent.click(ruButton);
-    
+
     // RU should now be active
     expect(enButton).toHaveClass('text-muted-foreground');
     expect(ruButton).toHaveClass('text-foreground');
-    
+
     // Click EN to switch back
     fireEvent.click(enButton);
-    
+
     // EN should be active again
     expect(enButton).toHaveClass('text-foreground');
     expect(ruButton).toHaveClass('text-muted-foreground');
-  });
-
-  it('switches language when clicking RU button', () => {
-    renderWithProvider(<LanguageSwitcher />);
-    
-    const enButton = screen.getByText('EN');
-    const ruButton = screen.getByText('RU');
-    
-    // Initially EN is active
-    expect(enButton).toHaveClass('text-foreground');
-    expect(ruButton).toHaveClass('text-muted-foreground');
-    
-    // Click RU to switch
-    fireEvent.click(ruButton);
-    
-    // RU should now be active
-    expect(enButton).toHaveClass('text-muted-foreground');
-    expect(ruButton).toHaveClass('text-foreground');
   });
 
   it('has correct CSS classes applied', () => {
@@ -86,12 +63,12 @@ describe('LanguageSwitcher Component', () => {
     expect(separator).toHaveClass('text-border');
   });
 
-  it('applies hover effects correctly', () => {
+  it('has hover utility classes applied', () => {
     renderWithProvider(<LanguageSwitcher />);
-    
+
     const ruButton = screen.getByText('RU');
-    
-    // Initially inactive, should have hover effect
+
+    // Verify hover utility class is present (actual hover behavior requires visual/E2E testing)
     expect(ruButton).toHaveClass('hover:text-foreground');
   });
 });

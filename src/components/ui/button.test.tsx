@@ -76,22 +76,15 @@ describe('Button Component', () => {
   });
 
   it('renders as child element when asChild prop is true', () => {
-    // Testing the asChild functionality requires wrapping with a child element
-    const LinkComponent = ({ children, ...props }: any) => (
-      <a {...props}>{children}</a>
-    );
-
-    const { container } = render(
-      <Button asChild {...{ as: "a", href: "/test" }}>
-        <LinkComponent>Child Button</LinkComponent>
+    render(
+      <Button asChild>
+        <a href="/test">Child Button</a>
       </Button>
     );
 
-    // Check that the button renders as a link
-    const linkElement = container.querySelector('a');
+    const linkElement = screen.getByRole('link', { name: /child button/i });
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute('href', '/test');
-    expect(linkElement?.textContent).toBe('Child Button');
   });
 
   it('applies custom className', () => {

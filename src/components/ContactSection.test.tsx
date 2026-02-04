@@ -1,12 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import ContactSection from '../components/ContactSection';
-import { LanguageProvider } from '../contexts/LanguageContext';
-
-// Wrapper to provide context
-const renderWithProvider = (ui: React.ReactElement) => {
-  return render(ui, { wrapper: ({ children }) => <LanguageProvider>{children}</LanguageProvider> });
-};
+import { renderWithProvider } from '../test/test-utils';
 
 describe('ContactSection Component', () => {
   it('renders the section title', () => {
@@ -54,9 +49,9 @@ describe('ContactSection Component', () => {
   it('renders motion elements with correct props', () => {
     renderWithProvider(<ContactSection />);
 
-    // Motion elements should render without errors - look for elements with animation styles
+    // Smoke test: verify framer-motion elements render.
+    // Expected: heading, paragraph, email container, and footer (4 elements minimum)
     const motionElements = document.querySelectorAll('[style*="opacity"], [style*="transform"]');
-    // At least the heading, paragraph, div, and footer should be motion elements
     expect(motionElements.length).toBeGreaterThanOrEqual(4);
   });
 

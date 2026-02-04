@@ -4,13 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "NODE_NO_WARNINGS=1 vite",
-    "build": "NODE_NO_WARNINGS=1 vite build",
-    "build:dev": "NODE_NO_WARNINGS=1 vite build --mode development",
-    "lint": "NODE_NO_WARNINGS=1 eslint .",
-    "preview": "NODE_NO_WARNINGS=1 vite preview",
-    "test": "NODE_NO_WARNINGS=1 vitest run",
-    "test:watch": "NODE_NO_WARNINGS=1 vitest"
+    "dev": "cross-env NODE_NO_WARNINGS=1 vite",
+    "build": "cross-env NODE_NO_WARNINGS=1 vite build",
+    "build:dev": "cross-env NODE_NO_WARNINGS=1 vite build --mode development",
+    "lint": "cross-env NODE_NO_WARNINGS=1 eslint .",
+    "preview": "cross-env NODE_NO_WARNINGS=1 vite preview",
+    "test": "cross-env NODE_NO_WARNINGS=1 vitest run",
+    "test:watch": "cross-env NODE_NO_WARNINGS=1 vitest"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -74,6 +74,7 @@
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react-swc": "^3.11.0",
     "autoprefixer": "^10.4.21",
+    "cross-env": "^10.1.0",
     "eslint": "^9.32.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",

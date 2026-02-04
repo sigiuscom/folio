@@ -1,12 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import HeroSection from '../components/HeroSection';
-import { LanguageProvider } from '../contexts/LanguageContext';
-
-// Wrapper to provide context
-const renderWithProvider = (ui: React.ReactElement) => {
-  return render(ui, { wrapper: ({ children }) => <LanguageProvider>{children}</LanguageProvider> });
-};
+import { renderWithProvider } from '../test/test-utils';
 
 describe('HeroSection Component', () => {
   it('renders hero content correctly', () => {
@@ -33,8 +28,9 @@ describe('HeroSection Component', () => {
   it('renders motion elements', () => {
     renderWithProvider(<HeroSection />);
 
-    // Motion elements should render without errors
-    // Look for elements with motion attributes or classes
+    // Smoke test: verify framer-motion elements render without errors.
+    // This checks for inline styles that framer-motion typically applies,
+    // but may be brittle across versions.
     const motionElements = document.querySelectorAll('[style*="transform"], [style*="opacity"]');
     expect(motionElements.length).toBeGreaterThan(0);
   });
