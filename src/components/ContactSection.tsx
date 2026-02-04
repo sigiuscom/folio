@@ -34,10 +34,10 @@ const ContactSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <a
-            href="mailto:hello@example.com"
+            href="mailto:sagolubev@outlook.com"
             className="inline-block text-xl md:text-2xl font-display link-underline hover:text-accent transition-colors duration-200"
           >
-            hello@example.com
+            sagolubev@outlook.com
           </a>
         </motion.div>
 
