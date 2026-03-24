@@ -46,13 +46,11 @@ describe('ContactSection Component', () => {
     expect(footerText).toHaveClass('text-sm', 'text-muted-foreground');
   });
 
-  it('renders motion elements with correct props', () => {
+  it('renders animated elements', () => {
     renderWithProvider(<ContactSection />);
 
-    // Smoke test: verify framer-motion elements render.
-    // Expected: heading, paragraph, email container, and footer (4 elements minimum)
-    const motionElements = document.querySelectorAll('[style*="opacity"], [style*="transform"]');
-    expect(motionElements.length).toBeGreaterThanOrEqual(4);
+    const animatedElements = document.querySelectorAll('.fade-ready');
+    expect(animatedElements.length).toBeGreaterThanOrEqual(4);
   });
 
   it('applies hover effects correctly', () => {

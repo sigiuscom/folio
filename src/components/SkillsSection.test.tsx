@@ -39,12 +39,11 @@ describe('SkillsSection Component', () => {
     });
   });
 
-  it('renders motion elements with correct props', () => {
+  it('renders animated elements', () => {
     renderWithProvider(<SkillsSection />);
 
-    // Smoke test: verify framer-motion elements render
-    const motionElements = document.querySelectorAll('[style*="opacity"], [style*="transform"]');
-    expect(motionElements.length).toBeGreaterThan(0);
+    const animatedElements = document.querySelectorAll('.fade-ready');
+    expect(animatedElements.length).toBeGreaterThan(0);
   });
 
   it('applies hover effects correctly', () => {

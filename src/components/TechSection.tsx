@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useInView } from '@/hooks/use-in-view';
 
 const technologies = [
   'Kubernetes', 'Docker', 'Helm', 'Terraform', 'Ansible',
@@ -13,26 +13,18 @@ const technologies = [
 
 const TechSection = () => {
   const { t } = useLanguage();
+  const { ref, inView } = useInView();
 
   return (
-    <section id="tech" className="py-24 md:py-32 px-6 md:px-12 lg:px-24 border-t border-border">
+    <section ref={ref} id="tech" className="py-24 md:py-32 px-6 md:px-12 lg:px-24 border-t border-border">
       <div className="max-w-6xl">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-sm tracking-wide uppercase text-muted-foreground mb-12"
-        >
+        <h2 className={`fade-ready text-sm tracking-wide uppercase text-muted-foreground mb-12${inView ? ' in-view' : ''}`}>
           {t('tech.title')}
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-2xl md:text-3xl font-display font-medium leading-relaxed max-w-4xl"
+        <p
+          className={`fade-ready text-2xl md:text-3xl font-display font-medium leading-relaxed max-w-4xl${inView ? ' in-view' : ''}`}
+          style={{ transitionDelay: inView ? '0.1s' : '0s' }}
         >
           {technologies.map((tech, index) => (
             <span key={tech}>
@@ -44,7 +36,7 @@ const TechSection = () => {
               )}
             </span>
           ))}
-        </motion.p>
+        </p>
       </div>
     </section>
   );

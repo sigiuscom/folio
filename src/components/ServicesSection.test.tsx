@@ -51,12 +51,11 @@ describe('ServicesSection Component', () => {
     expect(serviceItem).toHaveClass('group-hover:text-accent');
   });
 
-  it('renders motion elements with correct props', () => {
+  it('renders animated elements', () => {
     renderWithProvider(<ServicesSection />);
 
-    // Smoke test: verify framer-motion elements render
-    const motionElements = document.querySelectorAll('[style*="opacity"], [style*="transform"]');
-    expect(motionElements.length).toBeGreaterThan(0);
+    const animatedElements = document.querySelectorAll('.fade-ready');
+    expect(animatedElements.length).toBeGreaterThan(0);
   });
 
   it('formats numbers correctly', () => {

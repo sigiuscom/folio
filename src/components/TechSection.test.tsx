@@ -48,11 +48,10 @@ describe('TechSection Component', () => {
     expect(techItem).toHaveClass('hover:text-accent');
   });
 
-  it('renders motion elements with correct props', () => {
+  it('renders animated elements', () => {
     renderWithProvider(<TechSection />);
 
-    // Smoke test: verify framer-motion elements render
-    const motionElements = document.querySelectorAll('[style*="opacity"], [style*="transform"]');
-    expect(motionElements.length).toBeGreaterThanOrEqual(2);
+    const animatedElements = document.querySelectorAll('.fade-ready');
+    expect(animatedElements.length).toBeGreaterThanOrEqual(2);
   });
 });

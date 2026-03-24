@@ -11,7 +11,7 @@ const Index = () => {
     <LanguageProvider>
       <div className="min-h-screen bg-background">
         <LanguageSwitcher />
-        
+
         <main>
           <HeroSection />
           <SkillsSection />
