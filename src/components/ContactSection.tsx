@@ -1,37 +1,27 @@
-import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useInView } from '@/hooks/use-in-view';
 
 const ContactSection = () => {
   const { t } = useLanguage();
+  const { ref, inView } = useInView();
 
   return (
-    <section id="contact" className="py-24 md:py-32 px-6 md:px-12 lg:px-24 border-t border-border">
+    <section ref={ref} id="contact" className="py-24 md:py-32 px-6 md:px-12 lg:px-24 border-t border-border">
       <div className="max-w-4xl">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-sm tracking-wide uppercase text-muted-foreground mb-8"
-        >
+        <h2 className={`fade-ready text-sm tracking-wide uppercase text-muted-foreground mb-8${inView ? ' in-view' : ''}`}>
           {t('contact.title')}
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-2xl md:text-3xl font-display font-medium mb-12 max-w-2xl"
+        <p
+          className={`fade-ready text-2xl md:text-3xl font-display font-medium mb-12 max-w-2xl${inView ? ' in-view' : ''}`}
+          style={{ transitionDelay: inView ? '0.1s' : '0s' }}
         >
           {t('contact.text')}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        <div
+          className={`fade-ready${inView ? ' in-view' : ''}`}
+          style={{ transitionDelay: inView ? '0.2s' : '0s' }}
         >
           <a
             href="mailto:sagolubev@outlook.com"
@@ -39,19 +29,16 @@ const ContactSection = () => {
           >
             sagolubev@outlook.com
           </a>
-        </motion.div>
+        </div>
 
-        <motion.footer
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-32 pt-8 border-t border-border"
+        <footer
+          className={`fade-ready mt-32 pt-8 border-t border-border${inView ? ' in-view' : ''}`}
+          style={{ transitionDelay: inView ? '0.4s' : '0s' }}
         >
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()}
           </p>
-        </motion.footer>
+        </footer>
       </div>
     </section>
   );

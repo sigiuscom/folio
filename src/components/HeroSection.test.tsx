@@ -25,13 +25,10 @@ describe('HeroSection Component', () => {
     expect(title).toHaveClass('text-4xl', 'sm:text-5xl', 'md:text-6xl', 'lg:text-7xl');
   });
 
-  it('renders motion elements', () => {
+  it('renders animated elements', () => {
     renderWithProvider(<HeroSection />);
 
-    // Smoke test: verify framer-motion elements render without errors.
-    // This checks for inline styles that framer-motion typically applies,
-    // but may be brittle across versions.
-    const motionElements = document.querySelectorAll('[style*="transform"], [style*="opacity"]');
-    expect(motionElements.length).toBeGreaterThan(0);
+    const animatedElements = document.querySelectorAll('.animate-enter');
+    expect(animatedElements.length).toBeGreaterThan(0);
   });
 });
