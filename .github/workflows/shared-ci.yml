@@ -14,3 +14,9 @@ jobs:
   gitleaks:
     uses: sigiuscom/workflows/.github/workflows/gitleaks.yml@main
     secrets: inherit
+
+  node:
+    uses: sigiuscom/workflows/.github/workflows/node-app.yml@main
+    with:
+      package-manager: npm
+      typecheck-cmd: 'npx tsc --noEmit'
