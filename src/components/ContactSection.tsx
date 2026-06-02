@@ -1,5 +1,11 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useInView } from '@/hooks/use-in-view';
+import { Github, Linkedin } from 'lucide-react';
+
+const SOCIAL_LINKS = [
+  { href: 'https://github.com/sagolubev', icon: Github, label: 'GitHub' },
+  { href: 'https://linkedin.com/in/sagolubev', icon: Linkedin, label: 'LinkedIn' },
+];
 
 const ContactSection = () => {
   const { t } = useLanguage();
@@ -24,20 +30,34 @@ const ContactSection = () => {
           style={{ transitionDelay: inView ? '0.2s' : '0s' }}
         >
           <a
-            href="mailto:sagolubev@outlook.com"
+            href={`mailto:${t('contact.emailAddress')}`}
             className="inline-block text-xl md:text-2xl font-display link-underline hover:text-accent transition-colors duration-200"
           >
-            sagolubev@outlook.com
+            {t('contact.emailAddress')}
           </a>
         </div>
 
         <footer
-          className={`fade-ready mt-32 pt-8 border-t border-border${inView ? ' in-view' : ''}`}
+          className={`fade-ready mt-32 pt-8 border-t border-border flex items-center justify-between${inView ? ' in-view' : ''}`}
           style={{ transitionDelay: inView ? '0.4s' : '0s' }}
         >
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()}
+            &copy; {new Date().getFullYear()}
           </p>
+          <div className="flex items-center gap-4">
+            {SOCIAL_LINKS.map(({ href, icon: Icon, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+              >
+                <Icon size={20} />
+              </a>
+            ))}
+          </div>
         </footer>
       </div>
     </section>

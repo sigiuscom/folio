@@ -27,7 +27,7 @@ const ServicesSection = () => {
               className={`fade-ready py-6 border-b border-border group flex items-baseline gap-6${inView ? ' in-view' : ''}`}
               style={{ transitionDelay: inView ? `${index * 0.08}s` : '0s' }}
             >
-              <span className="text-muted-foreground text-sm font-body tabular-nums">
+              <span className="text-accent text-2xl md:text-3xl font-display font-bold tabular-nums leading-none">
                 0{index + 1}
               </span>
               <span className="text-xl md:text-2xl font-display font-medium group-hover:text-accent transition-colors duration-200">

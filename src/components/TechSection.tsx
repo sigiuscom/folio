@@ -16,7 +16,7 @@ const TechSection = () => {
   const { ref, inView } = useInView();
 
   return (
-    <section ref={ref} id="tech" className="py-24 md:py-32 px-6 md:px-12 lg:px-24 border-t border-border">
+    <section ref={ref} id="tech" className="py-24 md:py-32 px-6 md:px-12 lg:px-24 border-t border-border bg-secondary/30">
       <div className="max-w-6xl">
         <h2 className={`fade-ready text-sm tracking-wide uppercase text-muted-foreground mb-12${inView ? ' in-view' : ''}`}>
           {t('tech.title')}

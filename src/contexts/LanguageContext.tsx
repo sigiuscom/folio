@@ -42,6 +42,7 @@ const translations = {
     'contact.title': 'Contact',
     'contact.text': 'Open for consulting, architecture reviews and complex systems design',
     'contact.email': 'Get in touch',
+    'contact.emailAddress': 'sagolubev@outlook.com',
   },
   ru: {
     // Hero
@@ -76,6 +77,7 @@ const translations = {
     'contact.title': 'Контакты',
     'contact.text': 'Открыт к консалтингу, архитектурным ревью и проектированию сложных систем',
     'contact.email': 'Написать',
+    'contact.emailAddress': 'sagolubev@outlook.com',
   },
 };
 

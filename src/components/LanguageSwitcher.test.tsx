@@ -51,7 +51,7 @@ describe('LanguageSwitcher Component', () => {
     renderWithProvider(<LanguageSwitcher />);
     
     const container = screen.getByRole('button', { name: /EN/i }).closest('div');
-    expect(container).toHaveClass('fixed', 'top-6', 'right-6', 'z-50', 'flex', 'items-center', 'gap-3');
+    expect(container).toHaveClass('fixed', 'top-6', 'right-6', 'z-50', 'flex', 'items-center', 'gap-1');
     
     const enButton = screen.getByText('EN');
     const ruButton = screen.getByText('RU');

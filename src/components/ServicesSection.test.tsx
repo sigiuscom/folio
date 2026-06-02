@@ -65,7 +65,7 @@ describe('ServicesSection Component', () => {
     expect(numberElements.length).toBe(5);
 
     numberElements.forEach(num => {
-      expect(num).toHaveClass('text-sm', 'font-body', 'tabular-nums');
+      expect(num).toHaveClass('text-accent', 'font-display', 'tabular-nums');
     });
   });
 });
