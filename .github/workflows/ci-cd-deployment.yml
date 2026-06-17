@@ -41,6 +41,33 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Prepare Pages artifacts
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: echo 'sigius.com' > dist/CNAME
+
+      - name: Install deploy prerequisites
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          if command -v rsync >/dev/null 2>&1; then
+            exit 0
+          fi
+
+          if [ "$(id -u)" -eq 0 ]; then
+            SUDO=""
+          else
+            SUDO="sudo"
+          fi
+
+          if command -v apt-get >/dev/null 2>&1; then
+            $SUDO apt-get update
+            $SUDO apt-get install -y rsync
+          elif command -v apk >/dev/null 2>&1; then
+            $SUDO apk add --no-cache rsync
+          else
+            echo "No supported package manager found to install rsync" >&2
+            exit 1
+          fi
+
       - name: Deploy to deployment branch
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: JamesIves/github-pages-deploy-action@v4
@@ -48,4 +75,3 @@ jobs:
           branch: deployment
           folder: dist
           clean: true
-          cname: sigius.com
