@@ -22,8 +22,10 @@ export default defineConfig(({ mode }) => ({
     target: 'es2022',
     rollupOptions: {
       output: {
-        manualChunks: {
-          "vendor-react": ["react", "react-dom", "react-router-dom"],
+        manualChunks(id) {
+          if (/[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/.test(id)) {
+            return "vendor-react";
+          }
         },
       },
     },
