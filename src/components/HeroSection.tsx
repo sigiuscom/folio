@@ -1,7 +1,11 @@
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useMagnetic } from '@/hooks/use-magnetic';
+import ScrambleText from '@/components/ScrambleText';
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const ctaRef = useMagnetic<HTMLAnchorElement>(0.4);
+  const altRef = useMagnetic<HTMLAnchorElement>(0.25);
 
   return (
     <section className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-24 pt-28 md:pt-24">
@@ -16,12 +20,14 @@ const HeroSection = () => {
           <span className="accent-cursor text-muted-foreground">{t('hero.description')}</span>
         </p>
 
-        <h1
+        <ScrambleText
+          as="h1"
+          text={t('hero.title')}
+          delay={250}
+          duration={1100}
           className="animate-enter text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-semibold leading-[1.05] mb-7 text-glow"
           style={{ animationDelay: '0.1s' }}
-        >
-          {t('hero.title')}
-        </h1>
+        />
 
         <p
           className="animate-enter text-xl md:text-2xl text-muted-foreground max-w-2xl mb-12 font-light leading-relaxed"
@@ -32,13 +38,15 @@ const HeroSection = () => {
 
         <div className="animate-enter flex flex-wrap items-center gap-4" style={{ animationDelay: '0.3s' }}>
           <a
+            ref={ctaRef}
             href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-mono-label text-accent-foreground transition-all duration-300 hover:shadow-glow hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-mono-label text-accent-foreground transition-[box-shadow,transform] duration-300 hover:shadow-glow"
           >
             {t('hero.cta')}
             <span className="transition-transform duration-300 group-hover:translate-x-1">-&gt;</span>
           </a>
           <a
+            ref={altRef}
             href="#skills"
             className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 font-mono-label text-muted-foreground transition-colors duration-300 hover:border-accent hover:text-foreground"
           >

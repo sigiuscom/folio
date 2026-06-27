@@ -42,6 +42,24 @@ const TechSection = () => {
             </p>
           </div>
         </div>
+
+        <div
+          className="mask-fade-x mt-8 overflow-hidden"
+          aria-hidden="true"
+        >
+          <div className="flex w-max animate-marquee gap-8 font-mono-label text-muted-foreground">
+            {Array.from({ length: 2 }).flatMap((_, dup) =>
+              ['Ship', 'Scale', 'Secure', 'Observe', 'Automate', 'Architect', 'Monitor', 'Optimize'].map(
+                (word) => (
+                  <span key={`${dup}-${word}`} className="flex items-center gap-8">
+                    <span>{word}</span>
+                    <span className="text-accent">/</span>
+                  </span>
+                ),
+              ),
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

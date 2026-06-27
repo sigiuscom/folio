@@ -31,7 +31,14 @@ const SkillsSection = () => {
               className={`fade-ready glass-shell${inView ? ' in-view' : ''}`}
               style={{ transitionDelay: inView ? `${0.05 + index * 0.05}s` : '0s' }}
             >
-              <div className="group h-full glass rounded-[calc(var(--radius)-1px)] p-5 flex flex-col gap-6 transition-colors duration-300">
+              <div
+                className="group spotlight h-full glass rounded-[calc(var(--radius)-1px)] p-5 flex flex-col gap-6 transition-colors duration-300"
+                onPointerMove={(e) => {
+                  const r = e.currentTarget.getBoundingClientRect();
+                  e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`);
+                  e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`);
+                }}
+              >
                 <span className="font-mono-label text-muted-foreground transition-colors duration-300 group-hover:text-accent">
                   {String(index + 1).padStart(2, '0')}
                 </span>

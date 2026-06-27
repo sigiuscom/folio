@@ -1,6 +1,8 @@
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import DotField from '@/components/DotField';
+import ScrollProgress from '@/components/ScrollProgress';
+import TelemetryBadge from '@/components/TelemetryBadge';
 import HeroSection from '@/components/HeroSection';
 import SkillsSection from '@/components/SkillsSection';
 import TechSection from '@/components/TechSection';
@@ -12,6 +14,7 @@ const Index = () => {
     <LanguageProvider>
       <div className="relative min-h-screen bg-background">
         <DotField />
+        <ScrollProgress />
 
         <a
           href="#"
@@ -29,6 +32,8 @@ const Index = () => {
           <ServicesSection />
           <ContactSection />
         </main>
+
+        <TelemetryBadge />
       </div>
     </LanguageProvider>
   );

@@ -19,12 +19,14 @@
 .fade-ready {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(6px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade-ready.in-view {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 @layer base {
@@ -109,6 +111,7 @@
   .fade-ready {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
   }
 }
@@ -222,6 +225,31 @@
   .mask-fade-x {
     -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
     mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      220px circle at var(--mx, 50%) var(--my, 0%),
+      hsl(var(--accent) / 0.16),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .spotlight:hover::before {
+    opacity: 1;
   }
 }
 
