@@ -15,6 +15,8 @@ const translations = {
     'hero.subtitle': 'I design, build and operate scalable, reliable and secure systems',
     'hero.description': 'From Kubernetes and CI/CD to AI-ready cloud platforms',
     'hero.cta': 'Contact me',
+    'hero.explore': 'Explore stack',
+    'hero.scroll': 'Scroll to explore',
 
     // Skills
     'skills.title': 'Expertise',
@@ -50,6 +52,8 @@ const translations = {
     'hero.subtitle': 'Проектирую, внедряю и сопровождаю надёжные и масштабируемые системы',
     'hero.description': 'От Kubernetes и CI/CD до облачных и AI-готовых платформ',
     'hero.cta': 'Связаться со мной',
+    'hero.explore': 'Смотреть стек',
+    'hero.scroll': 'Листай вниз',
 
     // Skills
     'skills.title': 'Экспертиза',

@@ -16,7 +16,8 @@ export default {
     extend: {
       fontFamily: {
         display: ["Space Grotesk", "system-ui", "sans-serif"],
-        body: ["IBM Plex Sans", "system-ui", "sans-serif"],
+        body: ["Inter", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -24,6 +25,7 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        signal: "hsl(var(--signal))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -55,8 +57,12 @@ export default {
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 6px)",
+      },
+      boxShadow: {
+        glow: "0 0 0 1px hsl(var(--accent) / 0.4), 0 0 24px -4px hsl(var(--accent) / 0.55)",
+        "glow-sm": "0 0 16px -6px hsl(var(--accent) / 0.5)",
       },
       keyframes: {
         "accordion-down": {
@@ -67,10 +73,25 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        blink: {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
+        breathe: {
+          "0%, 100%": { opacity: "0.35", transform: "scale(1)" },
+          "50%": { opacity: "0.7", transform: "scale(1.04)" },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        blink: "blink 1.1s steps(1) infinite",
+        breathe: "breathe 5s cubic-bezier(0.4, 0, 0.2, 1) infinite",
+        marquee: "marquee 38s linear infinite",
       },
     },
   },

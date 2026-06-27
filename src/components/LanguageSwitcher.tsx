@@ -11,10 +11,10 @@ const LanguageSwitcher = () => {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="fixed top-6 right-6 z-50 flex items-center gap-1 text-sm font-body">
+    <div className="fixed top-6 right-6 z-50 flex items-center gap-1 rounded-full glass px-2 py-1 font-mono text-sm">
       <button
         onClick={() => setLanguage('en')}
-        className={`min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors duration-200 ${
+        className={`min-w-[40px] min-h-[36px] rounded-full flex items-center justify-center transition-colors duration-200 ${
           language === 'en'
             ? 'text-foreground'
             : 'text-muted-foreground hover:text-foreground'
@@ -25,7 +25,7 @@ const LanguageSwitcher = () => {
       <span className="text-border">/</span>
       <button
         onClick={() => setLanguage('ru')}
-        className={`min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors duration-200 ${
+        className={`min-w-[40px] min-h-[36px] rounded-full flex items-center justify-center transition-colors duration-200 ${
           language === 'ru'
             ? 'text-foreground'
             : 'text-muted-foreground hover:text-foreground'
@@ -33,10 +33,10 @@ const LanguageSwitcher = () => {
       >
         RU
       </button>
-      <span className="text-border ml-2">|</span>
+      <span className="mx-1 h-4 w-px bg-border" />
       <button
         onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-        className="min-w-[44px] min-h-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors duration-200"
+        className="min-w-[40px] min-h-[36px] rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors duration-200"
         aria-label="Toggle theme"
       >
         {mounted && (resolvedTheme === 'dark' ? <Sun size={18} /> : <Moon size={18} />)}
