@@ -15,7 +15,6 @@ concurrency:
 jobs:
   gitleaks:
     uses: sigiuscom/workflows/.github/workflows/gitleaks.yml@6095fb4fe57f438deb7d5491238e73260f5f0eb1 # main
-    secrets: inherit
 
   opengrep:
     uses: sigiuscom/workflows/.github/workflows/opengrep.yml@6095fb4fe57f438deb7d5491238e73260f5f0eb1 # main
