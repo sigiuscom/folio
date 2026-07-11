@@ -14,10 +14,10 @@ concurrency:
 
 jobs:
   gitleaks:
-    uses: sigiuscom/workflows/.github/workflows/gitleaks.yml@6095fb4fe57f438deb7d5491238e73260f5f0eb1 # main
+    uses: sigiuscom/workflows/.github/workflows/gitleaks.yml@b606fc16d412cba3d29c06b8c52ed55d72205a44 # main
 
   opengrep:
-    uses: sigiuscom/workflows/.github/workflows/opengrep.yml@6095fb4fe57f438deb7d5491238e73260f5f0eb1 # main
+    uses: sigiuscom/workflows/.github/workflows/opengrep.yml@b606fc16d412cba3d29c06b8c52ed55d72205a44 # main
     with:
       config: |
         p/typescript
@@ -27,7 +27,7 @@ jobs:
         p/secrets
 
   node:
-    uses: sigiuscom/workflows/.github/workflows/node-app.yml@6095fb4fe57f438deb7d5491238e73260f5f0eb1 # main
+    uses: sigiuscom/workflows/.github/workflows/node-app.yml@b606fc16d412cba3d29c06b8c52ed55d72205a44 # main
     with:
       package-manager: npm
       typecheck-cmd: 'npx tsc --noEmit'
