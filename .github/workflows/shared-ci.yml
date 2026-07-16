@@ -13,6 +13,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  actionlint:
+    uses: sigiuscom/workflows/.github/workflows/actionlint.yml@564401c4be1da8a13a19d39c8b0d666b48e02d1f
+
   gitleaks:
     uses: sigiuscom/workflows/.github/workflows/gitleaks.yml@b606fc16d412cba3d29c06b8c52ed55d72205a44 # main
 
