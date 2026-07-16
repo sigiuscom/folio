@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   actionlint:
-    uses: sigiuscom/workflows/.github/workflows/actionlint.yml@1ebbe82b1fafeb8066e17d58980a323f9da117cc
+    uses: sigiuscom/workflows/.github/workflows/actionlint.yml@96c8930ba5571658047132774b0d32ceee319a00
 
   gitleaks:
     uses: sigiuscom/workflows/.github/workflows/gitleaks.yml@b606fc16d412cba3d29c06b8c52ed55d72205a44 # main
