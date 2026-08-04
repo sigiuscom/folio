@@ -61,6 +61,14 @@ jobs:
           fi
 
           if command -v apt-get >/dev/null 2>&1; then
+            for source_file in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
+              if [ -f "$source_file" ]; then
+                $SUDO sed -i \
+                  -e 's|http://archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' \
+                  -e 's|http://security.ubuntu.com/ubuntu|https://security.ubuntu.com/ubuntu|g' \
+                  "$source_file"
+              fi
+            done
             APT_OPTIONS=(-o Acquire::ForceIPv4=true -o Acquire::Retries=3 -o Acquire::http::Timeout=15 -o Acquire::https::Timeout=15)
             $SUDO apt-get "${APT_OPTIONS[@]}" update
             $SUDO apt-get "${APT_OPTIONS[@]}" install -y rsync
