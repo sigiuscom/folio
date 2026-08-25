@@ -17,10 +17,10 @@ jobs:
     uses: sigiuscom/workflows/.github/workflows/actionlint.yml@96c8930ba5571658047132774b0d32ceee319a00
 
   gitleaks:
-    uses: sigiuscom/workflows/.github/workflows/gitleaks.yml@cce39db39c76e0a39f3537d709032642e14316df # main
+    uses: sigiuscom/workflows/.github/workflows/gitleaks.yml@69656a035135100a72ac84adb71b0b9db054a3da # main
 
   opengrep:
-    uses: sigiuscom/workflows/.github/workflows/opengrep.yml@cce39db39c76e0a39f3537d709032642e14316df # main
+    uses: sigiuscom/workflows/.github/workflows/opengrep.yml@69656a035135100a72ac84adb71b0b9db054a3da # main
     with:
       config: |
         p/typescript
@@ -30,7 +30,7 @@ jobs:
         p/secrets
 
   node:
-    uses: sigiuscom/workflows/.github/workflows/node-app.yml@cce39db39c76e0a39f3537d709032642e14316df # main
+    uses: sigiuscom/workflows/.github/workflows/node-app.yml@69656a035135100a72ac84adb71b0b9db054a3da # main
     with:
       package-manager: npm
       typecheck-cmd: 'npx tsc --noEmit'
