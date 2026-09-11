@@ -17,10 +17,10 @@ jobs:
     uses: sigiuscom/workflows/.github/workflows/actionlint.yml@96c8930ba5571658047132774b0d32ceee319a00
 
   gitleaks:
-    uses: sigiuscom/workflows/.github/workflows/gitleaks.yml@3dbecf6045f47c0b1a5d4bccd919e73605ad65e7 # main
+    uses: sigiuscom/workflows/.github/workflows/gitleaks.yml@68021f7726fdb1032bcc721dd7fea71e16a28a17 # main
 
   opengrep:
-    uses: sigiuscom/workflows/.github/workflows/opengrep.yml@3dbecf6045f47c0b1a5d4bccd919e73605ad65e7 # main
+    uses: sigiuscom/workflows/.github/workflows/opengrep.yml@68021f7726fdb1032bcc721dd7fea71e16a28a17 # main
     with:
       config: |
         p/typescript
