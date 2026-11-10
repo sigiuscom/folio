@@ -24,6 +24,38 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
+      - name: Install runtime and deploy prerequisites
+        timeout-minutes: 3
+        run: |
+          if command -v rsync >/dev/null 2>&1 && ldconfig -p | grep -F 'libatomic.so.1' >/dev/null; then
+            exit 0
+          fi
+
+          if [ "$(id -u)" -eq 0 ]; then
+            SUDO=""
+          else
+            SUDO="sudo"
+          fi
+
+          if command -v apt-get >/dev/null 2>&1; then
+            for source_file in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
+              if [ -f "$source_file" ]; then
+                $SUDO sed -i \
+                  -e 's|http://archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' \
+                  -e 's|http://security.ubuntu.com/ubuntu|https://security.ubuntu.com/ubuntu|g' \
+                  "$source_file"
+              fi
+            done
+            APT_OPTIONS=(-o Acquire::ForceIPv4=true -o Acquire::Retries=3 -o Acquire::http::Timeout=15 -o Acquire::https::Timeout=15)
+            $SUDO apt-get "${APT_OPTIONS[@]}" update
+            $SUDO apt-get "${APT_OPTIONS[@]}" install -y --no-install-recommends libatomic1 rsync
+          elif command -v apk >/dev/null 2>&1; then
+            $SUDO apk add --no-cache libatomic rsync
+          else
+            echo "No supported package manager found to install runtime prerequisites" >&2
+            exit 1
+          fi
+
       - name: Setup Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
@@ -45,39 +77,6 @@ jobs:
       - name: Prepare Pages artifacts
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: echo 'sigius.com' > dist/CNAME
-
-      - name: Install deploy prerequisites
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        timeout-minutes: 3
-        run: |
-          if command -v rsync >/dev/null 2>&1; then
-            exit 0
-          fi
-
-          if [ "$(id -u)" -eq 0 ]; then
-            SUDO=""
-          else
-            SUDO="sudo"
-          fi
-
-          if command -v apt-get >/dev/null 2>&1; then
-            for source_file in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
-              if [ -f "$source_file" ]; then
-                $SUDO sed -i \
-                  -e 's|http://archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' \
-                  -e 's|http://security.ubuntu.com/ubuntu|https://security.ubuntu.com/ubuntu|g' \
-                  "$source_file"
-              fi
-            done
-            APT_OPTIONS=(-o Acquire::ForceIPv4=true -o Acquire::Retries=3 -o Acquire::http::Timeout=15 -o Acquire::https::Timeout=15)
-            $SUDO apt-get "${APT_OPTIONS[@]}" update
-            $SUDO apt-get "${APT_OPTIONS[@]}" install -y rsync
-          elif command -v apk >/dev/null 2>&1; then
-            $SUDO apk add --no-cache rsync
-          else
-            echo "No supported package manager found to install rsync" >&2
-            exit 1
-          fi
 
       - name: Deploy to deployment branch
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
