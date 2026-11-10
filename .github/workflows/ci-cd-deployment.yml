@@ -26,9 +26,17 @@ jobs:
 
       - name: Install runtime and deploy prerequisites
         timeout-minutes: 3
+        env:
+          INSTALL_RSYNC: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         run: |
-          if command -v rsync >/dev/null 2>&1 && ldconfig -p | grep -F 'libatomic.so.1' >/dev/null; then
+          if ldconfig -p | grep -F 'libatomic.so.1' >/dev/null &&
+            { [ "$INSTALL_RSYNC" != true ] || command -v rsync >/dev/null 2>&1; }; then
             exit 0
+          fi
+
+          EXTRA_PACKAGES=()
+          if [ "$INSTALL_RSYNC" = true ]; then
+            EXTRA_PACKAGES+=(rsync)
           fi
 
           if [ "$(id -u)" -eq 0 ]; then
@@ -48,9 +56,9 @@ jobs:
             done
             APT_OPTIONS=(-o Acquire::ForceIPv4=true -o Acquire::Retries=3 -o Acquire::http::Timeout=15 -o Acquire::https::Timeout=15)
             $SUDO apt-get "${APT_OPTIONS[@]}" update
-            $SUDO apt-get "${APT_OPTIONS[@]}" install -y --no-install-recommends libatomic1 rsync
+            $SUDO apt-get "${APT_OPTIONS[@]}" install -y --no-install-recommends libatomic1 "${EXTRA_PACKAGES[@]}"
           elif command -v apk >/dev/null 2>&1; then
-            $SUDO apk add --no-cache libatomic rsync
+            $SUDO apk add --no-cache libatomic "${EXTRA_PACKAGES[@]}"
           else
             echo "No supported package manager found to install runtime prerequisites" >&2
             exit 1
